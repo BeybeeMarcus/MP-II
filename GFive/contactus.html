@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css"
     integrity="sha512-b42SanD3pNHoihKwgABd18JUZ2g9j423/frxIP5/gtYgfBz/0nDHGdY/3hi+3JwhSckM3JLklQ/T6tJmV7mZEw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
   <style>
@@ -451,7 +453,9 @@
             background-color: white;
         }
 
-
+        .is-invalid {
+            border: 1px solid red;
+        }
 
   </style>
 
@@ -569,50 +573,37 @@
     <p>Please contact us via the following form. We will reply within 24 hrs.</p>
   </div>
   <div class="container">
-    <form class="row g-3 w-75 mx-auto" id="contact-form" onsubmit="return validateForm()">
-      <div class="col-md-6" id="name">
-        <input type="text" class="form-control" id="fName" placeholder="Full Name" required>
-      </div>
-      <div class="col-md-6">
-        <input type="email" class="form-control" id="email" placeholder="Email" required>
-      </div>
-      <div class="col-md-6" id="subject">
-        <input type="text" class="form-control" placeholder="Subject" required>
-      </div>
-      <div class="col-md-6" id="number">
-        <input type="text" class="form-control" placeholder="Phone Number" required>
-      </div>
-      <div class="col-12" id="message">
-        <textarea class="form-control" placeholder="Your message" style="height: 200px"></textarea>
-      </div>
-      <div class="col-12" id="submit">
-        <button type="submit" class="btn btn-dark">Send</button>
-      </div>
-      <div class="statement2">
-        <div class="row soc-icon">
-          <div class="col icon facebook">
-            <div class="tooltip">Facebook</div>
-            <span><i class="bx bxl-facebook"></i></span>
+
+        <form class="row g-3 w-75 mx-auto" id="contact-form">
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="name" placeholder="Full Name"> 
+            <p id="nameError" class="text-danger"></p>
           </div>
-          <div class="col icon instagram">
-            <div class="tooltip">Instagram</div>
-            <span><i class="bx bxl-instagram"></i></span>
+          <div class="col-md-6">
+            <input type="email" class="form-control" id="email" placeholder="Email" >
           </div>
-          <div class="col icon twitter">
-            <div class="tooltip">Twitter</div>
-            <span><i class="bx bxl-twitter"></i></span>
+          <div class="col-md-6" id="subject">
+            <input type="text" class="form-control" placeholder="Subject" >
           </div>
-          <div class="col icon google">
-            <div class="tooltip">Google</div>
-            <span><i class="bx bxl-google"></i></span>
+          <div class="col-md-6" id="number">
+            <input type="text" class="form-control" placeholder="Phone Number" >
           </div>
-        </div>
-      </div>
-    </form>
+          <div class="col-12" id="message">
+            <textarea class="form-control" placeholder="Your message" style="height: 200px"></textarea>
+          </div>
+          <div class="col-12" id="submit">
+            <button type="submit" class="btn btn-dark">Send</button>
+          </div>
+        </form>
+
+        
+
+
+    
   </div>
 
   <img class="contact" src="./contactus.jpg" alt="contactusimg">
-
+<br><br>
 
 
   <!-- =================================================== Footer Start =============================================================== -->

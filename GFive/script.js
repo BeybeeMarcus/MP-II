@@ -1,75 +1,35 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
 
+const form = document.getElementById("contact-form");
+const submitBtn = document.getElementById("submit");
+const nameInput = document.getElementById("name");
+const nameError = document.getElementById("nameError");
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    nav-Menu.classList.toggle("active");
+form.addEventListener("submit", validateForm);
 
-})
+function validateForm(event) {
+  event.preventDefault(); // prevent form from submitting
 
-document.querySelectorAll(".nav-link").forEach(n => n.
-addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        nav-menu.classList.remove("active");
+  submitBtn.disabled = true;  // initially disable the submit button
 
-}))
-
-
-
-
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const subjectRegex = /^[a-zA-Z ]+$/;
-const numberRegex = /^[0-9]{10}$/;
-const messageRegex = /^(.|\n)+$/;
-
-const validateName = (name) => nameRegex.test(name);
-const validateEmail = (email) => emailRegex.test(email);
-const validateSubject = (subject) => subjectRegex.test(subject);
-const validateNumber = (number) => numberRegex.test(number);
-const validateMessage = (message) => messageRegex.test(message);
-
-function validateForm() {
-    // Get input values
-    const name = document.getElementById("fName").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const number = document.getElementById("number").value;
-    const message = document.
-
-    // Get input values
-    const name = document.getElementById("fName").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const number = document.getElementById("number").value;
-    const message = document.getElementById("message").value;
-  
-    if (!validateName(name)) {
-      alert("Please enter a valid name.");
-      return false;
-    }
-    if (!validateEmail(email)) {
-      alert("Please enter a valid email address.");
-      return false;
-    }
-    if (!validateSubject(subject)) {
-      alert("Please enter a valid subject.");
-      return false;
-    }
-    if (!validateNumber(number)) {
-      alert("Please enter a valid phone number.");
-      return false;
-    }
-    if (!validateMessage(message)) {
-      alert("Please enter a message.");
-      return false;
-    }
-  
-    // If all input is valid, submit the form
-    alert("Form submitted successfully!");
-    return true;
+  // Check if the name field is empty
+  if (!nameInput.value) {
+    nameError.innerText = "Name field is required";
+    return;
   }
+
+  // Check if the name meets the regular expression requirements
+  const nameRegex = /^([a-zA-Z]{3,}\s[a-zA-Z]{3,})$/;
+  if (!nameRegex.test(nameInput.value)) {
+    nameError.innerText = "Name must be 2 words with minimum of 3 letters each";
+    return;
+  }
+
+  // If validation passed, clear the error message, enable the submit button and submit the form
+  nameError.innerText = "";
+  submitBtn.disabled = false;  
+  form.submit();
+}
+
 
 // function sendEmail() {
 //     Email.send({
